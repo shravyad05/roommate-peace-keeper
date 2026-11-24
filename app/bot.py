@@ -546,7 +546,11 @@ async def handle_callback_query(update: Update, context: ContextTypes.DEFAULT_TY
 
 def create_bot_application(token: Optional[str] = None) -> Application:
     """Build and configure the Telegram Bot Application."""
-    bot_token = token or os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    if token is not None:
+        bot_token = token.strip()
+    else:
+        bot_token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+
     if not bot_token:
         raise ValueError("TELEGRAM_BOT_TOKEN environment variable is missing or empty.")
 
