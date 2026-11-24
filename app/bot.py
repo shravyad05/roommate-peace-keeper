@@ -14,8 +14,14 @@ import io
 import json
 import logging
 import os
+import sys
 import uuid
 from typing import Dict, Any, List
+
+# Ensure repository root is on sys.path so running directly works from any directory
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from dotenv import load_dotenv
 import requests

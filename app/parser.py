@@ -83,7 +83,6 @@ Extract the expense JSON now:"""
         response = client.messages.create(
             model=model,
             max_tokens=300,
-            temperature=0.0,
             system=PARSER_SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_prompt}],
         )
